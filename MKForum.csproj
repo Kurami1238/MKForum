@@ -67,12 +67,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BackAdmin\MemberCreate.aspx" />
+    <Content Include="BackAdmin\MemberEditor.aspx" />
     <Content Include="CreatePost.aspx" />
     <Content Include="Global.asax" />
+    <None Include="Logs\Log.log" />
+    <Content Include="MemberList.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackAdmin\MemberCreate.aspx.cs">
+      <DependentUpon>MemberCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackAdmin\MemberCreate.aspx.designer.cs">
+      <DependentUpon>MemberCreate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackAdmin\MemberEditor.aspx.cs">
+      <DependentUpon>MemberEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackAdmin\MemberEditor.aspx.designer.cs">
+      <DependentUpon>MemberEditor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CreatePost.aspx.cs">
       <DependentUpon>CreatePost.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -85,8 +103,16 @@
     </Compile>
     <Compile Include="Helpers\ConfigHelper.cs" />
     <Compile Include="Helpers\Logger.cs" />
+    <Compile Include="Managers\MemberManager.cs" />
+    <Compile Include="MemberList.aspx.cs">
+      <DependentUpon>MemberList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MemberList.aspx.designer.cs">
+      <DependentUpon>MemberList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Cboard.cs" />
-    <Compile Include="Models\Member.cs" />
+    <Compile Include="Models\Members.cs" />
     <Compile Include="Models\MemberBlack.cs" />
     <Compile Include="Models\MemberFollow.cs" />
     <Compile Include="Models\MemberIP.cs" />
@@ -117,7 +143,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Managers\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
