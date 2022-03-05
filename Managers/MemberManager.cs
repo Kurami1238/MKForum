@@ -112,7 +112,7 @@ namespace MKForum.Managers
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    using (SqlCommand command = new SqlCommand(connectionString, connection))
+                    using (SqlCommand command = new SqlCommand(commandText, connection))
                     {
                         connection.Open();
                         command.Parameters.AddWithValue("@Account", member.Account);
@@ -144,7 +144,7 @@ namespace MKForum.Managers
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    using (SqlCommand command = new SqlCommand(connectionString, connection))
+                    using (SqlCommand command = new SqlCommand(commandText, connection))
                     {
                         connection.Open();
                         command.Parameters.AddWithValue("@Account", member.Account);
