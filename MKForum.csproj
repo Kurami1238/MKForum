@@ -104,6 +104,7 @@
     <Compile Include="Helpers\ConfigHelper.cs" />
     <Compile Include="Helpers\Logger.cs" />
     <Compile Include="Managers\MemberManager.cs" />
+    <Compile Include="Managers\PostManager.cs" />
     <Compile Include="MemberList.aspx.cs">
       <DependentUpon>MemberList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

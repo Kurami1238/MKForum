@@ -1,5 +1,9 @@
-﻿using System;
+﻿using MKForum.Helpers;
+using MKForum.Managers;
+using MKForum.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,6 +15,36 @@ namespace MKForum
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+        }
+
+        protected void btnSend_Click(object sender, EventArgs e)
+        {
+            string TitleText = Title.Text.Trim();
+            string PostCotentText = PostCotent.InnerText.Trim();
+            // 從Session取得登錄者ID
+            Members memberid = new Members();
+             //Guid memberid = this.Session["MemberID"] as Guid;
+
+            // 取得 當前子板塊ID
+            Cboard cboardid = new Cboard();
+             //int cboardid = this.Session["CboradID"] as int;
+
+            // 檢查必填欄位及關鍵字
+
+            if (PostManager.CheckInput(TitleText, PostCotentText) == false)
+            {
+                List<string> errlist = PostManager.GetmsgList();
+                string allError = string.Join("<br/>", errlist);
+                ltlmsg.Text = allError;
+                return;
+            }
+             // 新建一筆Post
+
+            PostManager.CreatePost(memberid, cboardid, TitleText, PostCotentText);
+
+            // 提示使用者成功
+
 
         }
     }

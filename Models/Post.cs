@@ -10,7 +10,7 @@ namespace MKForum.Models
         public Guid PostID { get; set; }
         public int CboardID { get; set; }
         public Guid MemberID { get; set; }
-        public Guid PointID { get; set; }
+        public Guid? PointID { get; set; }
         public DateTime PostDate { get; set; }
         public int PostView { get; set; }
         public string Title { get; set; }
