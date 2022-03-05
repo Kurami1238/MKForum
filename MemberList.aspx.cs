@@ -24,6 +24,7 @@ namespace MKForum
             }
             else
             {
+                this.phEmpty.Visible = false;
                 this.GVMembers.DataSource = memberslist;
                 this.GVMembers.DataBind();
             }

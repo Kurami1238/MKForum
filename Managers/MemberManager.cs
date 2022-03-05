@@ -55,13 +55,13 @@ namespace MKForum.Managers
             }
         }
 
-        public Members GetMember(string name)
+        public Members GetMember(string MemberID)
         {
             string connectionString = ConfigHelper.GetConnectionString();
             string commandText =
-                @"
-                    SELECT * FROM Member
-                    WHERE NickName = @name
+                @"  
+                    SELECT * FROM Members
+                    WHERE MemberID = @MemberID
                 ";
 
             try
@@ -70,9 +70,9 @@ namespace MKForum.Managers
                 {
                     using (SqlCommand command = new SqlCommand(commandText, connection))
                     {
+                        command.Parameters.AddWithValue("@MemberID", MemberID);
                         connection.Open();
-                        command.Parameters.AddWithValue("@name", name);
-
+                        
                         SqlDataReader reader = command.ExecuteReader();
 
                         Members member = new Members()
@@ -92,8 +92,8 @@ namespace MKForum.Managers
             }
             catch (Exception ex)
             {
-                Logger.WriteLog("MemberManager.GetMembers", ex);
-                throw;
+                Logger.WriteLog("MemberManager.GetMember", ex);
+                return null;
             }
         }
 
