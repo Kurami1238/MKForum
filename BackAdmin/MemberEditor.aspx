@@ -11,10 +11,6 @@
     <form id="form1" runat="server">
         <table>
             <tr>
-                <th> ID: </th>
-                <td> <asp:Label ID="txtMember_ID" runat="server"></asp:Label> </td>
-            </tr>
-            <tr>
                 <th> 名稱: </th>
                 <td> <asp:TextBox ID="txtMember_name" runat="server"></asp:TextBox> </td>
             </tr>
@@ -43,6 +39,11 @@
                 <td> <asp:TextBox ID="txtMember_Mail" runat="server"></asp:TextBox> </td>
             </tr>
         </table>
+
+        <asp:PlaceHolder ID="phEmpty" runat="server">
+
+        </asp:PlaceHolder>
+
     </form>
 </body>
 </html>
