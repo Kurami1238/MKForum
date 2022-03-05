@@ -16,7 +16,6 @@ namespace MKForum.Managers
             string commandText =
                 @"
                     SELECT * FROM Members
-                    ORDER BY MemberID;
                 ";
             try
             {
@@ -70,9 +69,9 @@ namespace MKForum.Managers
                 {
                     using (SqlCommand command = new SqlCommand(commandText, connection))
                     {
-                        command.Parameters.AddWithValue("@MemberID", MemberID);
-                        connection.Open();
                         
+                        connection.Open();
+                        command.Parameters.AddWithValue("@MemberID", MemberID);
                         SqlDataReader reader = command.ExecuteReader();
 
                         Members member = new Members()

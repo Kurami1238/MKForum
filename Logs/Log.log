@@ -214,3 +214,25 @@ Error Number:207,State:1,Class:16
    於 System.Data.SqlClient.SqlDataReader.get_Item(String name)
    於 MKForum.Managers.MemberManager.GetMember(String MemberID) 於 D:\CSharp第3組組專題\Managers\MemberManager.cs: 行 78
  ----------------------
+------------------
+2022/03/05 22:02:04
+                MemberManager.GetMember
+                System.InvalidOperationException: 當目前沒有資料時，嘗試讀取無效。
+   於 System.Data.SqlClient.SqlDataReader.CheckDataIsReady(Int32 columnIndex, Boolean allowPartiallyReadColumn, Boolean permitAsync, String methodName)
+   於 System.Data.SqlClient.SqlDataReader.TryReadColumn(Int32 i, Boolean setTimeout, Boolean allowPartiallyReadColumn)
+   於 System.Data.SqlClient.SqlDataReader.GetValueInternal(Int32 i)
+   於 System.Data.SqlClient.SqlDataReader.GetValue(Int32 i)
+   於 System.Data.SqlClient.SqlDataReader.get_Item(String name)
+   於 MKForum.Managers.MemberManager.GetMember(String MemberID) 於 D:\CSharp第3組組專題\Managers\MemberManager.cs: 行 78
+ ----------------------
+------------------
+2022/03/05 22:18:16
+                MemberManager.GetMember
+                System.InvalidOperationException: 當目前沒有資料時，嘗試讀取無效。
+   於 System.Data.SqlClient.SqlDataReader.CheckDataIsReady(Int32 columnIndex, Boolean allowPartiallyReadColumn, Boolean permitAsync, String methodName)
+   於 System.Data.SqlClient.SqlDataReader.TryReadColumn(Int32 i, Boolean setTimeout, Boolean allowPartiallyReadColumn)
+   於 System.Data.SqlClient.SqlDataReader.GetValueInternal(Int32 i)
+   於 System.Data.SqlClient.SqlDataReader.GetValue(Int32 i)
+   於 System.Data.SqlClient.SqlDataReader.get_Item(String name)
+   於 MKForum.Managers.MemberManager.GetMember(String MemberID) 於 D:\CSharp第3組組專題\Managers\MemberManager.cs: 行 77
+ ----------------------
