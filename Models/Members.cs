@@ -5,9 +5,9 @@ using System.Web;
 
 namespace MKForum.Models
 {
-    public class Member
+    public class Members
     {
-        public int MemberID { get; set; }
+        public Guid MemberID { get; set; }
         public int MemberStatus { get; set; }
         public string Account { get; set; }
         public string Password { get; set; }
