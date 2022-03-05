@@ -9,6 +9,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
+
+        <asp:PlaceHolder ID="phEmpty" runat="server">
+            <div> 無此會員</div>
+        </asp:PlaceHolder>
+
         <table>
             <tr>
                 <th> 名稱: </th>
@@ -40,9 +45,8 @@
             </tr>
         </table>
 
-        <asp:PlaceHolder ID="phEmpty" runat="server">
+        <asp:Button ID="btnSave" runat="server" Text="儲存" OnClick="btnSave_Click" />
 
-        </asp:PlaceHolder>
 
     </form>
 </body>

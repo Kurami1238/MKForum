@@ -73,7 +73,7 @@ namespace MKForum.Managers
                         connection.Open();
                         command.Parameters.AddWithValue("@MemberID", MemberID);
                         SqlDataReader reader = command.ExecuteReader();
-
+                        reader.Read();
                         Members member = new Members()
                         {
                             MemberID = (Guid)reader["MemberID"],
@@ -135,9 +135,11 @@ namespace MKForum.Managers
             string connectionString = ConfigHelper.GetConnectionString();
             string commandText =
                 @"
-                    UPDATA Member
-                    SET Account = @Account, Password = @Password, Email = @Email
-                    Where
+                    UPDATA Members
+                    SET 
+                        Account = @Account, Password = @Password, Email = @Email, 
+                        NickName= @NickName, Birthday = @Birthday, Sex = @Sex
+                    Where MemberID = @MemberID
                 ";
             try
             {
@@ -152,6 +154,7 @@ namespace MKForum.Managers
                         command.Parameters.AddWithValue("@NickName", member.NickName);
                         command.Parameters.AddWithValue("@Birthday", member.Birthday);
                         command.Parameters.AddWithValue("@Sex", member.Sex);
+                        command.ExecuteNonQuery();
                     }
                 }
             }
