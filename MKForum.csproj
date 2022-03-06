@@ -70,6 +70,7 @@
     <Content Include="BackAdmin\MemberCreate.aspx" />
     <Content Include="BackAdmin\MemberEditor.aspx" />
     <Content Include="CreatePost.aspx" />
+    <Content Include="EditPost.aspx" />
     <Content Include="Global.asax" />
     <None Include="Logs\Log.log" />
     <Content Include="MemberList.aspx" />
@@ -98,11 +99,19 @@
     <Compile Include="CreatePost.aspx.designer.cs">
       <DependentUpon>CreatePost.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EditPost.aspx.cs">
+      <DependentUpon>EditPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditPost.aspx.designer.cs">
+      <DependentUpon>EditPost.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ConfigHelper.cs" />
     <Compile Include="Helpers\Logger.cs" />
+    <Compile Include="Managers\CboardManager.cs" />
     <Compile Include="Managers\MemberManager.cs" />
     <Compile Include="Managers\PostManager.cs" />
     <Compile Include="MemberList.aspx.cs">
