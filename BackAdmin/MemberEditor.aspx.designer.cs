@@ -42,13 +42,13 @@ namespace MKForum.BackAdmin
         protected global::System.Web.UI.WebControls.TextBox txtMember_name;
 
         /// <summary>
-        /// txtMember_Sex 控制項。
+        /// rdbtnMember_SexList 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMember_Sex;
+        protected global::System.Web.UI.WebControls.RadioButtonList rdbtnMember_SexList;
 
         /// <summary>
         /// txtMember_Birthday 控制項。
@@ -78,6 +78,24 @@ namespace MKForum.BackAdmin
         protected global::System.Web.UI.WebControls.TextBox txtMember_Account;
 
         /// <summary>
+        /// txtMember_PassWord 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMember_PassWord;
+
+        /// <summary>
+        /// txtMember_PassWord_Check 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMember_PassWord_Check;
+
+        /// <summary>
         /// btnMember_Password 控制項。
         /// </summary>
         /// <remarks>
@@ -103,5 +121,14 @@ namespace MKForum.BackAdmin
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSave;
+
+        /// <summary>
+        /// lblSave_notice 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSave_notice;
     }
 }
