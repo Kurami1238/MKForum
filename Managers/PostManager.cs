@@ -175,7 +175,6 @@ namespace MKForum.Managers
         static bool KinkiNoKotoba(string titletext, string postcotenttext)
         {
             // 比對標題及內文與禁字表是否有重疊
-            
             return true;
         }
 
