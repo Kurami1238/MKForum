@@ -69,6 +69,9 @@ namespace MKForum.Managers
                         command.Parameters.AddWithValue(@"postCotent", postcotent);
                     }
                 }
+                CreateInMemberFollows(member, postid);
+                List<MemberFollow> followlist = GetMemberFollowsMemberID(postid);
+
             }
             catch (Exception ex)
             {
@@ -76,7 +79,8 @@ namespace MKForum.Managers
                 throw;
             }
         }
-        public static void CreateInMemberFollows(Guid memberid, Guid postid) 
+        public static void RepliedtoNO() { }
+        public static void CreateInMemberFollows(Guid member, Guid postid) 
         {
             string connectionString = ConfigHelper.GetConnectionString();
             string commandText =
@@ -92,7 +96,7 @@ namespace MKForum.Managers
                     using (SqlCommand command = new SqlCommand(commandText, connection))
                     {
                         connection.Open();
-                        command.Parameters.AddWithValue(@"memberID", memberid);
+                        command.Parameters.AddWithValue(@"memberID", member);
                         command.Parameters.AddWithValue(@"postID", postid);
                         command.Parameters.AddWithValue(@"followStatus", 1);
                         command.Parameters.AddWithValue(@"replied", 1);
@@ -105,10 +109,48 @@ namespace MKForum.Managers
                 throw;
             }
         }
-        public static List<string> GetMemberFollowsMemberID() 
+        public static List<MemberFollow> GetMemberFollowsMemberID(Guid postid)
         {
-            
-            return null; 
+            string connectionStr = ConfigHelper.GetConnectionString();
+            string commandText =
+                @"
+                    SELECT * FROM MemberFollows
+                    WHERE PostID = @postID;
+                ";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionStr))
+                {
+                    using (SqlCommand command = new SqlCommand(commandText, connection))
+                    {
+                        List<MemberFollow> Follows = new List<MemberFollow>();
+                        connection.Open();
+
+                        command.Parameters.AddWithValue("@postID", postid);
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            MemberFollow Follow = new MemberFollow()
+                            {
+                                MemberID = (Guid)reader["MemberID"],
+                                PostID = (Guid)reader["PostID"],
+                                FollowStatus = (bool)reader["FollowStatus"],
+                                ReadedDate = (DateTime)reader["ReadedDate"],
+                                Replied = (bool)reader["Replied"],
+                            };
+                            Follows.Add(Follow);
+                        }
+                        return Follows;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog("MemberFollowManager.GetMemberFollows", ex);
+                throw;
+            }
         }
         public static Post GetPost(Guid postid)
         {
