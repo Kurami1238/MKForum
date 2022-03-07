@@ -16,7 +16,7 @@ namespace MKForum.BackAdmin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (_mfmsg.GetMemberFollow(memberID, postID).FollowStatus)
+            if (_mfmsg.GetMemberFollowThisPost(memberID, postID).FollowStatus)
                 this.lblMemberFollow_FollowStatus.Text = "追蹤中";
             else
                 this.lblMemberFollow_FollowStatus.Text = "未追蹤";
