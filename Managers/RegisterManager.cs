@@ -15,15 +15,23 @@ namespace MKForum.Managers
             string connStr = ConfigHelper.GetConnectionString();
 
             string commandText = @"
-                INSERT INTO Members
-                        (Account,PWD,Email)
-                VALUES
-                (@Account,@PWD,@Email)
+             INSERT INTO Members(Account,PWD,Email)
+            VALUES
+            (@Account,@PWD,@Email)
 
-                INSERT INTO MemberRegisters
-                        (Captcha)
-                VALUES
-                (@Captcha)
+            INSERT INTO MemberRecords (MemberID) 
+             SELECT MemberID
+             FROM Members;
+
+             INSERT INTO MemberRegisters(MemberID)
+             SELECT MemberID
+             FROM Members;
+
+             UPDATE MemberRegisters
+             SET Captcha=(@Captcha)
+             FROM MemberRegisters
+             INNER JOIN Members
+             ON MemberRegisters.MemberID=Members.MemberID;
                    ";
             try
             {
@@ -36,7 +44,6 @@ namespace MKForum.Managers
                         command.Parameters.AddWithValue("@PWD", member.Password);
                         command.Parameters.AddWithValue("@Email", member.Email);
                         //command.Parameters.AddWithValue("@MemberID", memberRegister.MemberID);
-                        //command.Parameters.AddWithValue("@RegisterTime", memberRegister.RegisterTime);
                         command.Parameters.AddWithValue("@Captcha", memberRegister.Captcha);
 
 

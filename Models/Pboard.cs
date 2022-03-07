@@ -7,7 +7,7 @@ namespace MKForum.Models
 {
     public class Pboard
     {
-        public int PboardID { get; set; }
+        public Guid PboardID { get; set; }
         public string Pname { get; set; }
         public DateTime PboardDate { get; set; }
         public int Porder { get; set; }
