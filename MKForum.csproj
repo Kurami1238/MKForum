@@ -112,6 +112,7 @@
     <Compile Include="Helpers\ConfigHelper.cs" />
     <Compile Include="Helpers\Logger.cs" />
     <Compile Include="Managers\CboardManager.cs" />
+    <Compile Include="Managers\MemberFollowManager.cs" />
     <Compile Include="Managers\MemberManager.cs" />
     <Compile Include="Managers\PostManager.cs" />
     <Compile Include="MemberList.aspx.cs">
