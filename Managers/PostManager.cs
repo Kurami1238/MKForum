@@ -11,7 +11,7 @@ namespace MKForum.Managers
     public class PostManager
     {
         private static List<string> _msgList = new List<string>();
-        public static void CreatePost(Members member, Cboard cboard, string titletext, string postcotenttext)
+        public static void CreatePost(Guid member, int cboard, string title, string postcotent)
         {
 
             string connectionString = ConfigHelper.GetConnectionString();
@@ -20,28 +20,125 @@ namespace MKForum.Managers
                     INSERT INTO Posts
                     (MemberID, CboardID, PostView, Title, PostCotent)
                     VALUES
-                    (@MemberID, @CboardID, @PostView, @Title, @PostCotent)
+                    (@memberID, @cboardID, @postView, @title, @postCotent)
                     ";
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    // (@MemberID, @CboardID, @PostView, @Title, @PostCotent)
-
                     using (SqlCommand command = new SqlCommand(commandText, connection))
                     {
                         connection.Open();
-                        command.Parameters.AddWithValue(@"MemberID", member.MemberID);
-                        command.Parameters.AddWithValue(@"CboardID", cboard.CboardID);
-                        command.Parameters.AddWithValue(@"PostView", 0);
-                        command.Parameters.AddWithValue(@"Title", titletext);
-                        command.Parameters.AddWithValue(@"PostCotent", postcotenttext);
+                        command.Parameters.AddWithValue(@"memberID", member);
+                        command.Parameters.AddWithValue(@"cboardID", cboard);
+                        command.Parameters.AddWithValue(@"postView", 0);
+                        command.Parameters.AddWithValue(@"title", title);
+                        command.Parameters.AddWithValue(@"postCotent", postcotent);
                     }
                 }
             }
             catch (Exception ex)
             {
-                Logger.WriteLog("MemberManager.GetMembers", ex);
+                Logger.WriteLog("PostManager,CreatePost", ex);
+                throw;
+            }
+        }
+        public static Post GetPost(Guid postid)
+        {
+            string connectionString = ConfigHelper.GetConnectionString();
+            string commandText =
+                @"  SELECT *
+                    FROM Posts
+                    WHERE PostID = @postID";
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(commandText))
+                    {
+                        command.Parameters.AddWithValue("@postID", postid);
+                        conn.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            Post post = new Post()
+                            {
+                                PostID = (Guid)reader["PostID"],
+                                MemberID = (Guid)reader["MemberID"],
+                                CboardID = (int)reader["CboardID"],
+                                PointID = (Guid?)reader["PointID"],
+                                PostDate = (DateTime)reader["PostDate"],
+                                PostView = (int)reader["PostView"],
+                                Title = (string)reader["Title"],
+                                PostCotent = (string)reader["PostCotent"],
+                                LastEditTime = (DateTime?)reader["LastEditTime"]
+                            };
+                            return post;
+                        }
+                        return null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog("PostManager.GetPost", ex);
+                throw;
+            }
+        }
+        public static void UpdatePost(Guid postid, string title, string postcotent)
+        {
+            string connectionString = ConfigHelper.GetConnectionString();
+            string commandText =
+                @"  UPDATE Posts
+                    SET 
+                        Title = @title,
+                        PostCotent = @postcotent,
+                        LastEditTime = @lastedittime,
+                    WHERE PostID = @postid ";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(commandText, connection))
+                    {
+                        connection.Open();
+
+                        command.Parameters.AddWithValue(@"postID", postid);
+                        command.Parameters.AddWithValue(@"title", title);
+                        command.Parameters.AddWithValue(@"postcotent", postcotent);
+                        command.Parameters.AddWithValue(@"lastedittime", DateTime.Now.ToString());
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog("PostManager,UpdatePost", ex);
+                throw;
+            }
+        }
+        public static void DeletePost(Guid postid)
+        {
+            string connectionString = ConfigHelper.GetConnectionString();
+            string commandText =
+                @"  DELETE FROM Posts
+                    WHERE PostID = @postid ";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(commandText, connection))
+                    {
+                        connection.Open();
+
+                        command.Parameters.AddWithValue(@"postID", postid);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog("PostManager,DeletePost", ex);
                 throw;
             }
         }
@@ -68,6 +165,12 @@ namespace MKForum.Managers
         public static List<string> GetmsgList()
         {
             return _msgList;
+        }
+        public static string GetmsgText()
+        {
+            List<string> errlist = PostManager.GetmsgList();
+            string allError = string.Join("<br/>", errlist);
+            return allError;
         }
         static bool KinkiNoKotoba(string titletext, string postcotenttext)
         {

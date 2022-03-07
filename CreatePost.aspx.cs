@@ -21,12 +21,12 @@ namespace MKForum
         protected void btnSend_Click(object sender, EventArgs e)
         {
             string TitleText = Title.Text.Trim();
-            string PostCotentText = PostCotent.InnerText.Trim();
+            string PostCotentText = PostCotent.InnerText;
             // 從Session取得登錄者ID
             Members memberid = new Members();
-             //Guid memberid = this.Session["MemberID"] as Guid;
+            //Guid memberid = this.Session["MemberID"] as Guid;
 
-            // 取得 當前子板塊ID
+            // 從Session取得當前子板塊ID
             Cboard cboardid = new Cboard();
              //int cboardid = this.Session["CboradID"] as int;
 
@@ -34,14 +34,12 @@ namespace MKForum
 
             if (PostManager.CheckInput(TitleText, PostCotentText) == false)
             {
-                List<string> errlist = PostManager.GetmsgList();
-                string allError = string.Join("<br/>", errlist);
-                ltlmsg.Text = allError;
+                ltlmsg.Text = PostManager.GetmsgText();
                 return;
             }
              // 新建一筆Post
 
-            PostManager.CreatePost(memberid, cboardid, TitleText, PostCotentText);
+            PostManager.CreatePost(memberid.MemberID, cboardid.CboardID, TitleText, PostCotentText);
 
             // 提示使用者成功
 

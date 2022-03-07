@@ -13,8 +13,9 @@ namespace MKForum.Models
         public Guid? PointID { get; set; }
         public DateTime PostDate { get; set; }
         public int PostView { get; set; }
-        public string Title { get; set; }
         public string PostCotent { get; set; }
+        public DateTime? LastEditTime { get; set; }
+        public string Title { get; set; }
 
     }
 }
