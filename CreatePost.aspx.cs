@@ -23,7 +23,7 @@ namespace MKForum
             string TitleText = Title.Text.Trim();
             string PostCotentText = PostCotent.InnerText;
             // 從Session取得登錄者ID
-            Members memberid = new Members();
+            Member memberid = new Member();
             //Guid memberid = this.Session["MemberID"] as Guid;
 
             // 從Session取得當前子板塊ID

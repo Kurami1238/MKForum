@@ -15,7 +15,7 @@ namespace MKForum.BackAdmin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Members memberInfo = _mmgr.GetMember("c8142d85-68c2-4483-ab51-e7d3fc366b89");
+            Member memberInfo = _mmgr.GetMember("c8142d85-68c2-4483-ab51-e7d3fc366b89");
 
             if (memberInfo == null)
             {
