@@ -135,7 +135,7 @@ namespace MKForum.Managers
             string connectionString = ConfigHelper.GetConnectionString();
             string commandText =
                 @"
-                    UPDATA Members
+                    UPDATE Members
                     SET 
                         Account = @Account, Password = @Password, Email = @Email, 
                         NickName= @NickName, Birthday = @Birthday, Sex = @Sex
@@ -148,6 +148,7 @@ namespace MKForum.Managers
                     using (SqlCommand command = new SqlCommand(commandText, connection))
                     {
                         connection.Open();
+                        command.Parameters.AddWithValue("@MemberID", member.MemberID);
                         command.Parameters.AddWithValue("@Account", member.Account);
                         command.Parameters.AddWithValue("@Password", member.Password);
                         command.Parameters.AddWithValue("@Email", member.Email);
@@ -160,7 +161,7 @@ namespace MKForum.Managers
             }
             catch (Exception ex)
             {
-                Logger.WriteLog("MemberManager.GetMembers", ex);
+                Logger.WriteLog("MemberManager.UpdateMember", ex);
                 throw;
             }
         }
