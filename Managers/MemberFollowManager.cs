@@ -55,7 +55,7 @@ namespace MKForum.Managers
             }
         }
 
-        public MemberFollow GetMemberFollow(string MemberID, string PostID)
+        public MemberFollow GetMemberFollowThisPost(string MemberID, string PostID)
         {
             string connectionStr = ConfigHelper.GetConnectionString();
             string commandText =
