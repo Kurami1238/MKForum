@@ -43,6 +43,73 @@ namespace MKForum.Managers
                 throw;
             }
         }
+        public static void CreatePost(Guid member, Guid postid, int cboard, string title, string postcotent)
+        {
+
+            string connectionString = ConfigHelper.GetConnectionString();
+            string commandText =
+                @"
+                    INSERT INTO Posts
+                    (MemberID, PointID, CboardID, PostView, Title, PostCotent)
+                    VALUES
+                    (@memberID, @pointID, @cboardID, @postView, @title, @postCotent)
+                    ";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(commandText, connection))
+                    {
+                        connection.Open();
+                        command.Parameters.AddWithValue(@"memberID", member);
+                        command.Parameters.AddWithValue(@"pointID", postid);
+                        command.Parameters.AddWithValue(@"cboardID", cboard);
+                        command.Parameters.AddWithValue(@"postView", 0);
+                        command.Parameters.AddWithValue(@"title", title);
+                        command.Parameters.AddWithValue(@"postCotent", postcotent);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog("PostManager,CreatePost", ex);
+                throw;
+            }
+        }
+        public static void CreateInMemberFollows(Guid memberid, Guid postid) 
+        {
+            string connectionString = ConfigHelper.GetConnectionString();
+            string commandText =
+                @"
+                    INSERT INTO MemberFollows
+                    (MemberID, PostID, FollowStatus, Replied)
+                    VALUES
+                    (@memberID, @postID, @followStatus, @replied";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(commandText, connection))
+                    {
+                        connection.Open();
+                        command.Parameters.AddWithValue(@"memberID", memberid);
+                        command.Parameters.AddWithValue(@"postID", postid);
+                        command.Parameters.AddWithValue(@"followStatus", 1);
+                        command.Parameters.AddWithValue(@"replied", 1);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog("PostManager,CreateInMemberFollows", ex);
+                throw;
+            }
+        }
+        public static List<string> GetMemberFollowsMemberID() 
+        {
+            
+            return null; 
+        }
         public static Post GetPost(Guid postid)
         {
             string connectionString = ConfigHelper.GetConnectionString();
@@ -177,6 +244,6 @@ namespace MKForum.Managers
             // 比對標題及內文與禁字表是否有重疊
             return true;
         }
-
+        
     }
 }
