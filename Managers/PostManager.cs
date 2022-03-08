@@ -71,7 +71,7 @@ namespace MKForum.Managers
                 }
                 CreateInMemberFollows(member, postid);
                 List<MemberFollow> followlist = GetMemberFollowsMemberID(postid);
-
+                RepliedtoNO(followlist);
             }
             catch (Exception ex)
             {
@@ -79,8 +79,38 @@ namespace MKForum.Managers
                 throw;
             }
         }
-        public static void RepliedtoNO() { }
-        public static void CreateInMemberFollows(Guid member, Guid postid) 
+        public static void RepliedtoNO(List<MemberFollow> member)
+        {
+            string connectionString = ConfigHelper.GetConnectionString();
+            string commandText =
+                @"UPDATE MemberFollows
+                  SET Replied = 0
+                  WHERE ";
+            for (int i = 0; i < member.Count; i++)
+            {
+                if (i != member.Count - 1)
+                    commandText += $"MemberID = {member[i].MemberID} OR ";
+                else
+                    commandText += $"MemberID = {member[i].MemberID}";
+            }
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(commandText, connection))
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog("PostManager,RepliedtoNO", ex);
+                throw;
+            }
+        }
+        public static void CreateInMemberFollows(Guid member, Guid postid)
         {
             string connectionString = ConfigHelper.GetConnectionString();
             string commandText =
@@ -286,6 +316,6 @@ namespace MKForum.Managers
             // 比對標題及內文與禁字表是否有重疊
             return true;
         }
-        
+
     }
 }
