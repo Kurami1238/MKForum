@@ -7,7 +7,7 @@ namespace MKForum.Models
 {
     public class MemberRecord
     {
-        public int MemberID { get; set; }
+        public Guid MemberID { get; set; }
         public DateTime EditDate { get; set; }
         public DateTime RegistrationDate { get; set; }
     }

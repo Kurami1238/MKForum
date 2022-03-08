@@ -11,7 +11,7 @@ namespace MKForum
 {
 
 
-    public partial class Register
+    public partial class Login
     {
 
         /// <summary>
@@ -24,85 +24,58 @@ namespace MKForum
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// plcReg 控制項。
+        /// plcLogin 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder plcReg;
+        protected global::System.Web.UI.WebControls.PlaceHolder plcLogin;
 
         /// <summary>
-        /// txtAcc 控制項。
+        /// txtAccount 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAcc;
+        protected global::System.Web.UI.WebControls.TextBox txtAccount;
 
         /// <summary>
-        /// btnAcc 控制項。
+        /// txtPassword 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAcc;
+        protected global::System.Web.UI.WebControls.TextBox txtPassword;
 
         /// <summary>
-        /// ltlAcc 控制項。
+        /// btnlogin 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltlAcc;
+        protected global::System.Web.UI.WebControls.Button btnlogin;
 
         /// <summary>
-        /// txtPwd 控制項。
+        /// ltlMessage 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPwd;
+        protected global::System.Web.UI.WebControls.Literal ltlMessage;
 
         /// <summary>
-        /// txtMail 控制項。
+        /// btnReg 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMail;
-
-        /// <summary>
-        /// txtCapt 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCapt;
-
-        /// <summary>
-        /// btnSubmit 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit;
-
-        /// <summary>
-        /// ltlReg 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltlReg;
+        protected global::System.Web.UI.WebControls.Button btnReg;
 
         /// <summary>
         /// plcInfo 控制項。

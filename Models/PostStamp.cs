@@ -7,7 +7,7 @@ namespace MKForum.Models
 {
     public class PostStamp
     {
-        public int CboardID { get; set; }
+        public Guid CboardID { get; set; }
         public string PostSort { get; set; }
     }
 }

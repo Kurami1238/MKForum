@@ -7,7 +7,7 @@ namespace MKForum.Models
 {
     public class MemberRegister
     {
-        public int MemberID { get; set; }
+        public Guid MemberID { get; set; }
         public DateTime SendTime { get; set; }
         public string Captcha { get; set; }
 

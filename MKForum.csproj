@@ -67,19 +67,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BackAdmin\Index.aspx" />
     <Content Include="BackAdmin\MemberCreate.aspx" />
     <Content Include="BackAdmin\MemberEditor.aspx" />
+<<<<<<< HEAD
+    <Content Include="BackAdmin\Registersuccess.aspx" />
+=======
     <Content Include="BackAdmin\MemberFollowEditor.aspx" />
+>>>>>>> 9a7cb22621f16af67bc30b1fb512ae7beda3113a
     <Content Include="CreatePost.aspx" />
     <Content Include="EditPost.aspx" />
     <Content Include="Global.asax" />
     <None Include="Logs\Log.log" />
+<<<<<<< HEAD
+    <Content Include="Login.aspx" />
+=======
     <Content Include="MemberFollowList.aspx" />
+>>>>>>> 9a7cb22621f16af67bc30b1fb512ae7beda3113a
     <Content Include="MemberList.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackAdmin\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackAdmin\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BackAdmin\MemberCreate.aspx.cs">
       <DependentUpon>MemberCreate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -94,12 +110,21 @@
     <Compile Include="BackAdmin\MemberEditor.aspx.designer.cs">
       <DependentUpon>MemberEditor.aspx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
+    <Compile Include="BackAdmin\Registersuccess.aspx.cs">
+      <DependentUpon>Registersuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackAdmin\Registersuccess.aspx.designer.cs">
+      <DependentUpon>Registersuccess.aspx</DependentUpon>
+=======
     <Compile Include="BackAdmin\MemberFollowEditor.aspx.cs">
       <DependentUpon>MemberFollowEditor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="BackAdmin\MemberFollowEditor.aspx.designer.cs">
       <DependentUpon>MemberFollowEditor.aspx</DependentUpon>
+>>>>>>> 9a7cb22621f16af67bc30b1fb512ae7beda3113a
     </Compile>
     <Compile Include="CreatePost.aspx.cs">
       <DependentUpon>CreatePost.aspx</DependentUpon>
@@ -120,10 +145,21 @@
     </Compile>
     <Compile Include="Helpers\ConfigHelper.cs" />
     <Compile Include="Helpers\Logger.cs" />
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\AccountManager.cs" />
     <Compile Include="Managers\CboardManager.cs" />
     <Compile Include="Managers\MemberFollowManager.cs" />
     <Compile Include="Managers\MemberManager.cs" />
     <Compile Include="Managers\PostManager.cs" />
+<<<<<<< HEAD
+    <Compile Include="Managers\RegisterManager.cs" />
+=======
     <Compile Include="MemberFollowList.aspx.cs">
       <DependentUpon>MemberFollowList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -131,6 +167,7 @@
     <Compile Include="MemberFollowList.aspx.designer.cs">
       <DependentUpon>MemberFollowList.aspx</DependentUpon>
     </Compile>
+>>>>>>> 9a7cb22621f16af67bc30b1fb512ae7beda3113a
     <Compile Include="MemberList.aspx.cs">
       <DependentUpon>MemberList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -139,7 +176,7 @@
       <DependentUpon>MemberList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Cboard.cs" />
-    <Compile Include="Models\Members.cs" />
+    <Compile Include="Models\Member.cs" />
     <Compile Include="Models\MemberBlack.cs" />
     <Compile Include="Models\MemberFollow.cs" />
     <Compile Include="Models\MemberIP.cs" />

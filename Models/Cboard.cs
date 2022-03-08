@@ -7,7 +7,7 @@ namespace MKForum.Models
 {
     public class Cboard
     {
-        public int CboardID { get; set; }
+        public Guid CboardID { get; set; }
         public int PboardID { get; set; }
         public string Cname { get; set; }
         public DateTime CboardDate { get; set; }

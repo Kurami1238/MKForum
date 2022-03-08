@@ -15,7 +15,7 @@ namespace MKForum
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<Members> memberslist = this._mmgr.GetMembers();
+            List<Member> memberslist = this._mmgr.GetMembers();
 
             if (memberslist.Count() == 0)
             {

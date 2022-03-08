@@ -17,7 +17,23 @@ namespace MKForum.BackAdmin
 
         protected void Page_Load(object sender, EventArgs e)
         {
+<<<<<<< HEAD
+            Member memberInfo = _mmgr.GetMember("c8142d85-68c2-4483-ab51-e7d3fc366b89");
+
+            if (memberInfo == null)
+            {
+                this.txtMember_name.Visible = false;
+                this.txtMember_Sex.Visible = false;
+                this.txtMember_Birthday.Visible = false;
+                this.lblMember_Status.Visible = false;
+                this.txtMember_Account.Visible = false;
+                this.txtMember_Mail.Visible = false;
+                this.phEmpty.Visible = true;
+            }
+            else
+=======
             if (!IsPostBack)
+>>>>>>> 9a7cb22621f16af67bc30b1fb512ae7beda3113a
             {
                 Members memberInfo = _mmgr.GetMember(SearchMemberID);
 
