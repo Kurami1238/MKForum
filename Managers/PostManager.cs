@@ -71,7 +71,7 @@ namespace MKForum.Managers
                 }
                 CreateInMemberFollows(member, postid);
                 List<MemberFollow> followlist = GetMemberFollowsMemberID(postid);
-                RepliedtoNO(followlist);
+                RepliedtoNO(followlist,postid);
             }
             catch (Exception ex)
             {
@@ -79,7 +79,7 @@ namespace MKForum.Managers
                 throw;
             }
         }
-        public static void RepliedtoNO(List<MemberFollow> member)
+        public static void RepliedtoNO(List<MemberFollow> member, Guid postid)
         {
             string connectionString = ConfigHelper.GetConnectionString();
             string commandText =
@@ -89,9 +89,9 @@ namespace MKForum.Managers
             for (int i = 0; i < member.Count; i++)
             {
                 if (i != member.Count - 1)
-                    commandText += $"MemberID = {member[i].MemberID} OR ";
+                    commandText += $"(MemberID = {member[i].MemberID} AND PostID = {postid}) OR ";
                 else
-                    commandText += $"MemberID = {member[i].MemberID}";
+                    commandText += $"(MemberID = {member[i].MemberID} AND PostID = {postid})";
             }
             try
             {
